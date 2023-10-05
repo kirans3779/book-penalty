@@ -1,0 +1,60 @@
+
+<div class="container py-5">
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-6">
+<div class="card">
+    <!-- card heading -->
+    <div class="card-header">
+        <p class="text-center">Book Registration</p>
+    </div>
+    <div class="card-body p-5">
+        <!-- form start  -->
+ <form  [formGroup]="checkoutForm" (ngSubmit)="calculatePenalty()">
+    <!-- checkout date  -->
+    <div class="form-box my-3">
+        <div class="label">
+            Checkout Date
+        </div>
+        <div class="input-box">
+            <input type="date" class="form-control" placeholder="Checkout Date" formControlName="checkoutdate">
+        </div>
+    </div>
+    <!-- return date -->
+    <div class="form-box my-3">
+        <div class="label">
+            Return Date
+        </div>
+        <div class="input-box">
+            <input type="date" class="form-control" placeholder="Return Date"  formControlName="returndate">
+        </div>
+    </div>
+    <!-- country -->
+    <div class="form-box my-3">
+        <div class="label">
+            Country
+        </div>
+        <div class="input-box">
+           <select name="country"  formControlName="country"  class="form-control form-select" >
+            <option  selected>Select</option>
+            <option value="India">India</option>
+            <option value="UK">UK</option>
+            <option value="US">US</option>
+            <option value="Canada">Canada</option>
+           </select>
+        </div>
+    </div>
+    <div class="form-box my-3 mx-auto">
+        <div class="input-box">
+            <button type="submit" class="btn btn-warning form-control" [disabled]="!checkoutForm.valid"> Calculate Penalty</button>
+        </div>
+    </div>
+    <!-- Penalty showing here -->
+    <div *ngIf="isEmpty" class="card bg-warning text-center">
+       You have to pay {{penalty | currency: 'INR'}}
+    </div>
+</form>
+    </div>
+</div>
+    </div>
+</div>
+</div>
